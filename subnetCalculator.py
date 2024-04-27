@@ -12,7 +12,6 @@ def calculate(ip_str, cidr_int):
     hosts = 32 - cidr_int
     mask = int((cidr_int * '1' + hosts * '0'), 2)
     host_mask = int(hosts * '1', 2)
-    #bin_ip = int(format(ip_str, '032b'), 2)
     bin_ip = make_ip_num(ip_str)
     bin_mask = int(format(mask, '032b'), 2)
 
@@ -36,15 +35,14 @@ def pretty_print(subnet_tuple):
     for i in range(len(subnet_tuple)):
         print(label_tuple[i], make_ip_str(subnet_tuple[i]))
 
-
 if __name__ == '__main__': 
     if len(sys.argv) == 3:       
         ip_address=str(sys.argv[1])
         cidr=int(sys.argv[2])
-        #ip_int = make_ip_num(ip_address)
         results = calculate(ip_address,cidr)
         pretty_print(results)
     else:
         print("Hey! You did that wrong!")
         print("Format is <ip address> <cidr>")
         print("Example: 192.168.1.1 24")
+        
