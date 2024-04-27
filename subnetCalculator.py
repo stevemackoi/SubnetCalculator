@@ -36,7 +36,9 @@ def pretty_print(subnet_tuple):
         print(label_tuple[i], make_ip_str(subnet_tuple[i]))
 
 if __name__ == '__main__': 
-    if len(sys.argv) == 3:       
+    if int(sys.argv[2]) >= 32:
+        print("You're not subnetting if your CIDR is >= 32!")
+    elif len(sys.argv) == 3:       
         ip_address=str(sys.argv[1])
         cidr=int(sys.argv[2])
         results = calculate(ip_address,cidr)
